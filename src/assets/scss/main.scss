@@ -5,6 +5,15 @@
 $ed-tech-black-primary: #080e1b;
 $ed-tech-black-secondary: #0a1121;
 $ed-tech-blue-primary: #2b91ce;
+$ed-tech-gray-primary: rgba($color: #808080, $alpha: 0.4);
+$ed-tech-gray-secondary: #748094;
+
+// setting everything default here
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 // body style
 body {
@@ -15,8 +24,22 @@ body {
     background-color: $ed-tech-black-primary;
 }
 
-h2 {
-    margin: 0;
+// utility classes
+.container {
+    width: 70%;
+    margin: 100px auto;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.v-align-middle {
+    vertical-align: middle;
 }
 
 // button design here
@@ -25,8 +48,11 @@ h2 {
     color: white;
     padding: 10px 20px;
     height: fit-content;
-    border-radius: 100px;
-    border: 2px solid $ed-tech-blue-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid $ed-tech-blue-primary;
     transition: background-color 0.3s ease-in-out,
                 transform 0.2s ease-in-out;
 }
@@ -38,4 +64,20 @@ h2 {
 
 .ed-tech-button:active {
     transform: scale(0.9);
+}
+
+.ed-tech-button + .ed-tech-button {
+    margin-left: 20px; 
+}
+
+.ed-tech-button-fixed {
+    width: 120px;
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .container{
+        width: 90%;
+        margin: 50px auto;
+    }
 }

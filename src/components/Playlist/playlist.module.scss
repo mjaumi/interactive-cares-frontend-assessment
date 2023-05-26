@@ -1,0 +1,17 @@
+@import "../../assets/scss/main.scss";
+
+.ed_tech_playlist_container {
+    width: 28%;
+    background-color: $ed-tech-black-secondary;
+    padding: 20px;
+    border: 1px solid $ed-tech-gray-primary;
+    border-radius: 5px;
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .ed_tech_playlist_container {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

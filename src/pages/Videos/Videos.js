@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
+import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
 const Videos = () => {
 
@@ -7,7 +8,7 @@ const Videos = () => {
     return (
         <div>
             <Navbar />
-            <h1>Video player here</h1>
+            <VideoPlayer />
         </div>
     );
 };

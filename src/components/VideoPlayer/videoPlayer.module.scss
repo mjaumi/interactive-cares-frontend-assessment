@@ -1,0 +1,13 @@
+// video player styles here
+
+.ed_tech_video_player {
+    display: flex;
+    justify-content: space-between;
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .ed_tech_video_player {
+        flex-direction: column;
+    }
+}
