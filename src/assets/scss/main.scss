@@ -9,18 +9,20 @@ $ed-tech-gray-primary: rgba($color: #808080, $alpha: 0.2);
 $ed-tech-gray-accent: #0F172A;
 $ed-tech-gray-progress: #1E293B;
 $ed-tech-gray-secondary: #748094;
+$ed-tech-green-primary: #37D399;
+$ed-tech-red-primary: #bb150f;
 
 // setting everything default here
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 // body style
 body {
     margin: 0;
-    font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: $ed-tech-black-primary;
@@ -62,7 +64,7 @@ body {
     border-radius: 5px;
     border: 1px solid $ed-tech-blue-primary;
     transition: background-color 0.3s ease-in-out,
-                transform 0.2s ease-in-out;
+        transform 0.2s ease-in-out;
 }
 
 .ed-tech-button:hover {
@@ -74,17 +76,59 @@ body {
     transform: scale(0.9);
 }
 
-.ed-tech-button + .ed-tech-button {
-    margin-left: 20px; 
+.ed-tech-button+.ed-tech-button {
+    margin-left: 20px;
 }
 
+// fixed button design here
 .ed-tech-button-fixed {
     width: 120px;
 }
 
+// icon button design here
+.ed-tech-icon-button {
+    border: 0;
+    padding: 0;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.ed-tech-icon-button:hover {
+    background-color: transparent;
+    transform: scale(1.2);
+}
+
+.ed-tech-icon-button.add:hover {
+    color: $ed-tech-green-primary;
+}
+
+.ed-tech-icon-button.delete {
+    color: $ed-tech-red-primary;
+}
+
+.ed-tech-icon-button.edit {
+    color: $ed-tech-blue-primary;
+}
+
+// input design here
+.ed-tech-input {
+    border: 0;
+    padding: 10px;
+    width: 80%;
+    color: white;
+    background-color: transparent;
+}
+
+.ed-tech-input:focus {
+    outline: none;
+}
+
+.ed-tech-input::placeholder {
+    color: rgba($color: #ffffff, $alpha: 0.6);
+}
+
 // responsiveness for mobile
 @media (max-width: 640px) {
-    .container{
+    .container {
         width: 90%;
         margin: 50px auto;
     }

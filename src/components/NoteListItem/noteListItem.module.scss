@@ -1,0 +1,56 @@
+@import '../../assets/scss/main.scss';
+
+// note list item design here
+.ed_tech_note_item_container {
+    margin: 10px 0;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $ed-tech-black-secondary;
+    border: 1px solid $ed-tech-gray-primary;
+    border-radius: 5px;
+}
+
+.ed_tech_note_item_wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.ed_tech_note_item_wrapper .time_stamp {
+    font-weight: 600;
+    padding-right: 20px;
+    color: $ed-tech-blue-primary;
+    border-right: 2px solid $ed-tech-blue-primary;
+}
+
+.ed_tech_note_item_wrapper .note {
+    font-weight: 300;
+    padding: 0 20px 7px;
+}
+
+.ed_tech_note_button_container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .ed_tech_note_item_container {
+        flex-direction: column-reverse;
+    }
+
+    .ed_tech_note_item_wrapper .time_stamp {
+        padding-right: 10px;
+    }
+
+    .ed_tech_note_item_wrapper .note {
+        font-weight: 300;
+        padding: 0 10px 7px;
+        font-size: 15px;
+    }
+
+    .ed_tech_note_button_container {
+        margin-bottom: 20px;
+    }
+}

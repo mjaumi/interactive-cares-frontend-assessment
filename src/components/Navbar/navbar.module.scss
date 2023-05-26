@@ -1,6 +1,8 @@
 @import "../../assets/scss/main.scss";
 
 .ed_tech_header {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: center;
     background-color: $ed-tech-black-secondary;
@@ -30,7 +32,7 @@
 
 // responsiveness for mobile devices
 @media (max-width: 640px) {
-    .ed_tech_nav{
+    .ed_tech_nav {
         width: 90%;
     }
 }

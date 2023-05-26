@@ -1,0 +1,38 @@
+@import '../../assets/scss/main.scss';
+
+// note list style here
+.ed_tech_note_list_container {
+    width: 100%;
+    margin-top: 30px;
+    color: white;
+}
+
+.ed_tech_note_list_container h3 {
+    font-weight: 600;
+}
+
+// add new note form design here
+.ed_tech_note_add_form {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $ed-tech-black-secondary;
+    border: 1px solid $ed-tech-gray-primary;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+// time stamp styles here
+.ed_tech_note_time_stamp {
+    display: flex;
+    width: 100%;
+}
+
+.ed_tech_note_time_stamp p {
+    font-weight: 600;
+    padding: 7px 20px 0 0;
+    border-right: 2px solid white;
+}

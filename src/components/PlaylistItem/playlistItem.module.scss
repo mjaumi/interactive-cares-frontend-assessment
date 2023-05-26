@@ -5,7 +5,7 @@
     padding: 10px 0;
     border-bottom: 1px solid $ed-tech-gray-primary;
     transition: background-color 0.2s ease-in-out,
-                transform 0.2s ease-in-out;
+        transform 0.2s ease-in-out;
 }
 
 .ed_tech_playlist_item:hover {
@@ -23,7 +23,7 @@
     align-items: flex-start;
 }
 
-.ed_tech_playlist_item_container div + div {
+.ed_tech_playlist_item_container div+div {
     margin-left: 15px;
 }
 
