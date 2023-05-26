@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './playerIFrame.module.scss';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from 'react-icons/ai';
 import NoteList from '../NoteList/NoteList';
+import ReactPlayer from 'react-player';
 
 const PlayerIFrame = () => {
+    // integration of react hooks here
+    const [isVideoPaused, setIsVideoPaused] = useState(false);
+
+    // this function is checking if the video is playing or paused
+    const videoPlayPauseChecker = state => {
+        setIsVideoPaused(state);
+    }
 
     // rendering the video player component here
     return (
         <div className={styles.ed_tech_player_container}>
             <div>
-                <iframe src='https://www.youtube.com/embed/GxAYlEK7ZGg' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
+                <ReactPlayer className={styles.ed_tech_video_player} controls url='https://www.youtube.com/embed/GxAYlEK7ZGg' onPlay={() => videoPlayPauseChecker(false)} onPause={() => videoPlayPauseChecker(true)} />
             </div>
             <div className={styles.ed_tech_player_title_container}>
                 <div>
@@ -28,7 +36,7 @@ const PlayerIFrame = () => {
                 </div>
             </div>
             <div>
-                <NoteList />
+                <NoteList isVideoPaused={isVideoPaused} />
             </div>
         </div>
     );

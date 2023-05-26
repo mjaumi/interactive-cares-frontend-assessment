@@ -3,12 +3,14 @@ import styles from './noteList.module.scss';
 import { MdAddTask } from 'react-icons/md';
 import NoteListItem from '../NoteListItem/NoteListItem';
 
-const NoteList = () => {
+const NoteList = ({ isVideoPaused }) => {
+
+    console.log(isVideoPaused);
 
     // rendering note list component here
     return (
         <div className={styles.ed_tech_note_list_container}>
-            <div>
+            <div className={`${isVideoPaused ? 'block' : 'hidden'}`}>
                 <h3>Add New Note</h3>
                 <div >
                     <form className={styles.ed_tech_note_add_form}>
