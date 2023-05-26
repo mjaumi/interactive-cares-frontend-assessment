@@ -1,0 +1,41 @@
+// font imports here
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+// declaring CSS variables here
+$ed-tech-black-primary: #080e1b;
+$ed-tech-black-secondary: #0a1121;
+$ed-tech-blue-primary: #2b91ce;
+
+// body style
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $ed-tech-black-primary;
+}
+
+h2 {
+    margin: 0;
+}
+
+// button design here
+.ed-tech-button {
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    height: fit-content;
+    border-radius: 100px;
+    border: 2px solid $ed-tech-blue-primary;
+    transition: background-color 0.3s ease-in-out,
+                transform 0.2s ease-in-out;
+}
+
+.ed-tech-button:hover {
+    background-color: $ed-tech-blue-primary;
+    cursor: pointer;
+}
+
+.ed-tech-button:active {
+    transform: scale(0.9);
+}
