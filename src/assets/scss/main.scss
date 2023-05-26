@@ -5,7 +5,8 @@
 $ed-tech-black-primary: #080e1b;
 $ed-tech-black-secondary: #0a1121;
 $ed-tech-blue-primary: #2b91ce;
-$ed-tech-gray-primary: rgba($color: #808080, $alpha: 0.4);
+$ed-tech-gray-primary: rgba($color: #808080, $alpha: 0.2);
+$ed-tech-gray-accent: #0F172A;
 $ed-tech-gray-secondary: #748094;
 
 // setting everything default here
@@ -28,6 +29,10 @@ body {
 .container {
     width: 70%;
     margin: 100px auto;
+}
+
+.mt-4 {
+    margin-top: 4px;
 }
 
 .mr-10 {
