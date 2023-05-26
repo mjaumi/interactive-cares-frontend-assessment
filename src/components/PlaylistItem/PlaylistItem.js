@@ -13,7 +13,7 @@ const PlaylistItem = () => {
                 </div>
                 <div>
                     <p>Bangladesh vs Sri Lanka Highlights | 3rd ODI | Tri-Nation Series 2018</p>
-                    <span>5:30 Mins</span>
+                    <span className='ed-tech-span'>5:30 Mins</span>
                 </div>
             </div>
         </div>
