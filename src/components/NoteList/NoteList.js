@@ -3,7 +3,7 @@ import styles from './noteList.module.scss';
 import { MdAddTask } from 'react-icons/md';
 import NoteListItem from '../NoteListItem/NoteListItem';
 
-const NoteList = ({ isVideoPaused, timeStamp }) => {
+const NoteList = ({ isVideoPaused, timeStamp, seekToTimeStamp }) => {
     // rendering note list component here
     return (
         <div className={styles.ed_tech_note_list_container}>
@@ -24,9 +24,9 @@ const NoteList = ({ isVideoPaused, timeStamp }) => {
             <div>
                 <h3>Exiting Notes For This Video</h3>
                 <div>
-                    <NoteListItem />
-                    <NoteListItem />
-                    <NoteListItem />
+                    <NoteListItem seekToTimeStamp={seekToTimeStamp} />
+                    <NoteListItem seekToTimeStamp={seekToTimeStamp} />
+                    <NoteListItem seekToTimeStamp={seekToTimeStamp} />
                 </div>
             </div>
         </div>

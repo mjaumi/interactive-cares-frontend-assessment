@@ -27,6 +27,15 @@ const PlayerIFrame = () => {
         setTimeStamp(minutes + ':' + leftSeconds);
     }
 
+    // this function is seeking the current video to the desired timestamp
+    const seekToTimeStamp = timeStampString => {
+        const [minutes, seconds] = timeStampString.split(':');
+
+        const totalSeconds = (Number(minutes) * 60) + Number(seconds);
+
+        videoRef.current.seekTo(totalSeconds, 'seconds');
+    }
+
     // rendering the video player component here
     return (
         <div className={styles.ed_tech_player_container}>
@@ -50,7 +59,11 @@ const PlayerIFrame = () => {
                 </div>
             </div>
             <div>
-                <NoteList isVideoPaused={isVideoPaused} timeStamp={timeStamp} />
+                <NoteList
+                    isVideoPaused={isVideoPaused}
+                    timeStamp={timeStamp}
+                    seekToTimeStamp={seekToTimeStamp}
+                />
             </div>
         </div>
     );

@@ -19,9 +19,24 @@
 
 .ed_tech_note_item_wrapper .time_stamp {
     font-weight: 600;
+    height: 100%;
     padding-right: 20px;
     color: $ed-tech-blue-primary;
     border-right: 2px solid $ed-tech-blue-primary;
+}
+
+.ed_tech_note_item_wrapper .time_stamp p {
+    height: fit-content;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.ed_tech_note_item_wrapper .time_stamp p:hover {
+    opacity: 0.8;
+}
+
+.ed_tech_note_item_wrapper .time_stamp p:active {
+    transform: scale(0.9);
 }
 
 .ed_tech_note_item_wrapper .note {
