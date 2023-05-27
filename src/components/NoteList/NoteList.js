@@ -6,6 +6,7 @@ import axios from '../../utils/axios';
 import { useMutation, useQueryClient } from 'react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId }) => {
     // integration of react hooks here
@@ -23,6 +24,14 @@ const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
+            toast.success('New Note Added!!', {
+                toastId: 'add note success',
+            });
+        },
+        onError: () => {
+            toast.error('New Note Adding Failed!!', {
+                toastId: 'add note fail',
+            });
         }
     });
 

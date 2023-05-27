@@ -7,6 +7,7 @@ import axios from '../../utils/axios';
 import { useMutation, useQueryClient } from 'react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     // destructuring the note object here
@@ -28,6 +29,15 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
+
+            toast.success('Note Updated!!', {
+                toastId: 'note updated success',
+            });
+        },
+        onError: () => {
+            toast.error('Note Updating Failed!!', {
+                toastId: 'note update fail',
+            });
         }
     });
 
@@ -37,6 +47,15 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
+
+            toast.success('Note Deleted!!', {
+                toastId: 'note delete success',
+            });
+        },
+        onError: () => {
+            toast.error('Note Deleting Failed!!', {
+                toastId: 'note delete fail',
+            });
         }
     });
 
