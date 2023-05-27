@@ -2,7 +2,9 @@ import React from 'react';
 import styles from './playlistItem.module.scss';
 import { BsPlayCircleFill } from 'react-icons/bs';
 
-const PlaylistItem = () => {
+const PlaylistItem = ({ video }) => {
+    // destructing the video object here
+    const { title, duration } = video || {};
 
     // rendering playlist item component here
     return (
@@ -12,8 +14,8 @@ const PlaylistItem = () => {
                     <BsPlayCircleFill className='mt-4' />
                 </div>
                 <div>
-                    <p>Bangladesh vs Sri Lanka Highlights | 3rd ODI | Tri-Nation Series 2018</p>
-                    <span className='ed-tech-span'>5:30 Mins</span>
+                    <p>{title}</p>
+                    <span className='ed-tech-span'>{duration} Mins</span>
                 </div>
             </div>
         </div>

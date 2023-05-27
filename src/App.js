@@ -1,10 +1,11 @@
-import Videos from "./pages/Videos/Videos";
+import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
+
 
 function App() {
   return (
-    <div>
-      <Videos />
-    </div>
+    <main>
+      <VideoPlayer />
+    </main>
   );
 }
 

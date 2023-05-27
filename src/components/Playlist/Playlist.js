@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './playlist.module.scss';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 
-const Playlist = () => {
+const Playlist = ({ videos }) => {
 
     // rendering the video playlist component here
     return (
@@ -11,13 +11,15 @@ const Playlist = () => {
                 <div className={styles.ed_tech_playlist_progress_bar}>
                     <div style={{ width: '33.33%' }} className={styles.ed_tech_playlist_progress}></div>
                 </div>
-                <span className='ed-tech-span'>3 / 10</span>
+                <span className='ed-tech-span'>3 / {videos?.length}</span>
             </div>
             <div>
-                <PlaylistItem />
-                <PlaylistItem />
-                <PlaylistItem />
-                <PlaylistItem />
+                {
+                    videos.map(video => <PlaylistItem
+                        key={video.video_id}
+                        video={video}
+                    />)
+                }
             </div>
         </div>
     );

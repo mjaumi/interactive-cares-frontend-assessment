@@ -28,6 +28,31 @@ body {
     background-color: $ed-tech-black-primary;
 }
 
+// scrollbar styles here
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: $ed-tech-blue-primary;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 0;
+    width: 0;
+    display: none;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    display: none;
+}
+
 // utility classes
 .container {
     width: 70%;
