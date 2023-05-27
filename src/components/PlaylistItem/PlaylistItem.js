@@ -13,7 +13,7 @@ const PlaylistItem = ({ video, isVideoWatched }) => {
 
     // this function is navigating to user selected video
     const navigateToVideo = videoId => {
-        navigate(`/${videoId}`);
+        navigate(`/videos/${videoId}`);
     }
 
     // rendering playlist item component here

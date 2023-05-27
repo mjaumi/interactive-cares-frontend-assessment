@@ -12,13 +12,13 @@ const Videos = () => {
 
     // rendering videos page here
     return (
-        <div>
+        <>
             <Navbar />
             <div className={`container ${styles.ed_tech_video_player}`}>
                 <VideoPlayerFrame user={data?.data} />
                 <Playlist user={data?.data} />
             </div>
-        </div>
+        </>
     );
 };
 

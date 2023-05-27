@@ -1,0 +1,32 @@
+// signup page styles here
+.ed_tech_signup_name_container {
+    display: flex;
+}
+
+.ed_tech_signup_name_container input {
+    min-width: 195px;
+}
+
+.ed_tech_signup_name_container div {
+    margin-bottom: 0;
+}
+
+.ed_tech_signup_name_container div+div {
+    margin-left: 10px;
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .ed_tech_signup_name_container {
+        flex-direction: column;
+    }
+
+    .ed_tech_signup_name_container input {
+        min-width: none;
+        width: 100%;
+    }
+
+    .ed_tech_signup_name_container div+div {
+        margin-left: 0;
+    }
+}

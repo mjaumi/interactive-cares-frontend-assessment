@@ -57,11 +57,11 @@ const VideoPlayerFrame = ({ user }) => {
     // handler function to handle next or previous video jumping feature
     const jumpToVideoHandler = (videoId, nextOrPrev) => {
         if (nextOrPrev === 'next') {
-            navigate(`/${videoId + 1}`);
+            navigate(`/videos/${videoId + 1}`);
 
             addVideoToWatchedList();
         } else {
-            navigate(`/${videoId - 1}`);
+            navigate(`/videos/${videoId - 1}`);
         }
 
     }

@@ -28,6 +28,20 @@ body {
     background-color: $ed-tech-black-primary;
 }
 
+// anchor tag design
+a {
+    color: $ed-tech-blue-primary;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+a:active {
+    transform: scale(0.9);
+}
+
 // scrollbar styles here
 ::-webkit-scrollbar {
     width: 5px;
@@ -97,6 +111,11 @@ body {
     color: $ed-tech-gray-secondary;
 }
 
+// logo design here
+.ed-tech-logo span {
+    font-weight: 200;
+}
+
 // button design here
 .ed-tech-button {
     background-color: transparent;
@@ -133,6 +152,19 @@ body {
 // fixed button design here
 .ed-tech-button-fixed {
     width: 120px;
+}
+
+// full width button design here
+.ed-tech-button-block {
+    width: 100%;
+}
+
+.ed-tech-button-block.log-btn {
+    background-color: $ed-tech-blue-primary;
+}
+
+.ed-tech-button-block.log-btn:hover {
+    background-color: transparent;
 }
 
 // icon button design here
@@ -176,6 +208,59 @@ body {
     color: rgba($color: #ffffff, $alpha: 0.6);
 }
 
+// authentication input design here
+.ed-tech-auth-input-container {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.ed-tech-auth-input-container span {
+    font-size: 12px;
+}
+
+.ed-tech-auth-input {
+    display: block;
+    background-color: $ed-tech-black-primary;
+    border: 1px solid $ed-tech-blue-primary;
+    min-width: 400px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+}
+
+// auth page design here 
+.ed-tech-auth-section {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ed-tech-auth-form-container {
+    background-color: $ed-tech-black-secondary;
+    border: 1px solid $ed-tech-gray-primary;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.ed-tech-auth-text {
+    margin: 10px 0;
+}
+
+.ed-tech-auth-text h3 {
+    font-weight: 400;
+}
+
+.ed-tech-create-account-text {
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
 // responsiveness for tablet & low resolution PC
 @media (max-width: 1366px) {
     .container {
@@ -189,5 +274,19 @@ body {
     .container {
         width: 90%;
         margin: 50px auto;
+    }
+
+    .ed-tech-auth-form-container {
+        padding: 20px 10px;
+        width: 100%;
+    }
+
+    .ed-tech-auth-section {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .ed-tech-auth-input {
+        min-width: 100%;
     }
 }
