@@ -4,6 +4,7 @@ import Login from './pages/Authentication/Login/Login';
 import Signup from './pages/Authentication/Signup/Signup';
 import PrivateRoute from './components/Routes/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/Routes/PublicRoute/PublicRoute';
+import NotFound from './pages/NotFound/NotFound';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <VideoPlayer />
           </PrivateRoute>
         } />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,36 @@
+@import '../../assets/scss/main.scss';
+
+// not found page design here
+.ed_tech_not_found_section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.ed_tech_not_found_container h1 {
+    font-size: 80px;
+    color: $ed-tech-blue-primary;
+}
+
+.ed_tech_not_found_container p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.ed_tech_not_found_container button {
+    margin: 20px auto 0;
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .ed_tech_not_found_container p {
+        font-size: 15px;
+        font-weight: 300;
+        width: 80%;
+        margin: 0 auto;
+    }
+}
