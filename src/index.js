@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '../src/assets/scss/main.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ToastContainer } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
@@ -12,6 +14,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
+      <ToastContainer position='top-center' theme='dark' />
     </QueryClientProvider>
   </React.StrictMode>
 

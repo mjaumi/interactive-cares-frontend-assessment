@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     // integration of react-firebase hooks here
@@ -21,10 +22,17 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
     }
 
-    console.log(user);
-
     if (user) {
+        toast.success('Login Successful!!', {
+            toastId: 'login success',
+        });
         navigate('/videos/1');
+    }
+
+    if (error) {
+        toast.error('Login Failed!!', {
+            toastId: 'login fail',
+        });
     }
 
     // rendering login page here
@@ -48,7 +56,7 @@ const Login = () => {
                             <input value={password} onChange={e => setPassword(e.target.value)} type="password" className='ed-tech-auth-input' placeholder='Password Here...' />
                         </div>
                         <p className='ed-tech-create-account-text'>Don't Have An Account? <Link to='/signup'>Create Account Here</Link></p>
-                        <button className='ed-tech-button ed-tech-button-block log-btn' type="submit">Login</button>
+                        <button className='ed-tech-button ed-tech-button-block log-btn' type="submit" disabled={loading}>Login</button>
                     </form>
                 </div>
             </section>

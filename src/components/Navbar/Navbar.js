@@ -4,6 +4,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     // integration of react-firebase hooks here
@@ -15,9 +16,18 @@ const Navbar = () => {
 
     // handler function to handle user logout
     const userLogoutHandler = async () => {
+        const success = await signOut();
 
-        await signOut();
-        navigate('/');
+        if (success) {
+            toast.success('Logout Successful!!', {
+                toastId: 'logout success',
+            });
+            navigate('/');
+        } else {
+            toast.success('Logout Failed!!', {
+                toastId: 'logout fail',
+            });
+        }
     }
 
     // rendering navbar component here

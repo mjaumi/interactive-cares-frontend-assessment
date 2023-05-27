@@ -67,6 +67,11 @@ a:active {
     display: none;
 }
 
+// react-toastify class overriding here
+.Toastify__toast-container {
+    text-align: center;
+}
+
 // utility classes
 .container {
     width: 70%;

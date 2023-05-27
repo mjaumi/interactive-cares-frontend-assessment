@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import axios from '../../../utils/axios';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
     // integration of react-firebase hooks here
@@ -36,10 +37,21 @@ const Signup = () => {
 
             const { status } = await axios.post('/user', userData);
 
-            console.log(user, status);
+            if (user && status === 200) {
+                toast.success('SignUp Successful!! Please, Login To Your Account.', {
+                    toastId: 'signup success',
+                });
+            }
+
             navigate('/');
         }
 
+    }
+
+    if (error || updatingError) {
+        toast.error('Signup Failed!!', {
+            toastId: 'signup fail',
+        });
     }
 
     // rendering signup page here
@@ -77,7 +89,7 @@ const Signup = () => {
                             <input value={confPassword} onChange={e => setConfPassword(e.target.value)} type="password" className='ed-tech-auth-input' placeholder='Retype Password Here...' required />
                         </div>
                         <p className='ed-tech-create-account-text'>Already Have An Account? <Link to='/'>Login Here</Link></p>
-                        <button className='ed-tech-button ed-tech-button-block log-btn' type="submit">Signup</button>
+                        <button className='ed-tech-button ed-tech-button-block log-btn' type="submit" disabled={loading || updating}>Signup</button>
                     </form>
                 </div>
             </section>
