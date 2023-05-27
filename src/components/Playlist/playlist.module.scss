@@ -37,8 +37,19 @@
     transition: width 0.2s ease-in-out;
 }
 
-// responsiveness for mobile
-@media (max-width: 640px) {
+// responsiveness for low resolution PC
+@media (max-width: 1366px) {
+    .ed_tech_playlist_container {
+        padding: 10px 0;
+    }
+
+    .ed_tech_playlist_progress_bar_container {
+        padding: 0 10px;
+    }
+}
+
+// responsiveness for mobile & tablet
+@media (max-width: 1280px) {
     .ed_tech_playlist_container {
         width: 100%;
         margin-top: 20px;

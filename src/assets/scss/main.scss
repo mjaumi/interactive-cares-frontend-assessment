@@ -176,6 +176,14 @@ body {
     color: rgba($color: #ffffff, $alpha: 0.6);
 }
 
+// responsiveness for tablet & low resolution PC
+@media (max-width: 1366px) {
+    .container {
+        width: 80%;
+        margin: 50px auto;
+    }
+}
+
 // responsiveness for mobile
 @media (max-width: 640px) {
     .container {

@@ -14,7 +14,7 @@
 .ed_tech_nav {
     margin-top: 0;
     color: white;
-    width: 70%;
+    margin: 0 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,11 +33,4 @@
     margin-right: 20px;
     color: $ed-tech-blue-primary;
     font-weight: 500;
-}
-
-// responsiveness for mobile devices
-@media (max-width: 640px) {
-    .ed_tech_nav {
-        width: 90%;
-    }
 }

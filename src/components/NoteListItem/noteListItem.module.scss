@@ -20,6 +20,7 @@
 .ed_tech_note_item_wrapper .time_stamp {
     font-weight: 600;
     height: 100%;
+    width: 10%;
     padding-right: 20px;
     color: $ed-tech-blue-primary;
     border-right: 2px solid $ed-tech-blue-primary;
@@ -57,6 +58,7 @@
 
     .ed_tech_note_item_wrapper .time_stamp {
         padding-right: 10px;
+        width: 25%;
     }
 
     .ed_tech_note_item_wrapper .note {

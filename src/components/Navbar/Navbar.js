@@ -6,7 +6,7 @@ const Navbar = () => {
     // rendering navbar component here
     return (
         <header className={styles.ed_tech_header}>
-            <nav className={styles.ed_tech_nav}>
+            <nav className={`container ${styles.ed_tech_nav}`}>
                 <div>
                     <h2 className={styles.ed_tech_nav_logo}>Ed <span>Tech</span></h2>
                 </div>

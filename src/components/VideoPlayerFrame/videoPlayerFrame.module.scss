@@ -49,3 +49,31 @@
         margin: 20px auto;
     }
 }
+
+// responsiveness for mobile
+@media (max-width: 1280px) {
+    .ed_tech_player_container {
+        width: 100%;
+    }
+
+    .ed_tech_video_player {
+        height: 500px !important;
+    }
+
+    .ed_tech_player_title_container {
+        flex-direction: column;
+    }
+
+    .ed_tech_player_btn_container {
+        width: 90%;
+        justify-content: space-between;
+        margin: 20px auto;
+    }
+}
+
+// responsiveness for mobile
+@media (max-width: 640px) {
+    .ed_tech_video_player {
+        height: 300px !important;
+    }
+}
