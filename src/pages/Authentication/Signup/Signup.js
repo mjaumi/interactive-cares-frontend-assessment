@@ -20,6 +20,7 @@ const Signup = () => {
     // integration of react-router-dom hooks here
     const navigate = useNavigate();
 
+    // handler function to handle user sign up
     const userSignupHandler = async (e) => {
         e.preventDefault();
 
