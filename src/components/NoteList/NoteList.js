@@ -4,17 +4,22 @@ import { MdAddTask } from 'react-icons/md';
 import NoteListItem from '../NoteListItem/NoteListItem';
 import axios from '../../utils/axios';
 import { useMutation, useQueryClient } from 'react-query';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId }) => {
     // integration of react hooks here
     const [noteText, setNoteText] = useState('');
+
+    // integration of react-firebase hooks here
+    const [user] = useAuthState(auth);
 
     // integration of react-query hooks here
     const queryClient = useQueryClient();
 
     // integration of react-query hooks for adding new note
     const noteMutation = useMutation(noteData => {
-        return axios.patch('/notes?email=mjaumi2864@gmail.com', noteData);
+        return axios.patch(`/notes?email=${user.email}`, noteData);
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
@@ -31,7 +36,7 @@ const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId
             timestamp,
         };
 
-        noteMutation.mutate(noteData);
+        user && noteMutation.mutate(noteData);
 
         // resetting the note text input
         setNoteText('');

@@ -5,10 +5,15 @@ import { FaRegEdit } from 'react-icons/fa';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import axios from '../../utils/axios';
 import { useMutation, useQueryClient } from 'react-query';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     // destructuring the note object here
     const { _id, note, timestamp } = videoNote || {};
+
+    // integration of react-firebase hooks here
+    const [user] = useAuthState(auth);
 
     // integration of react hooks here
     const [toggleEditButton, setToggleEditButton] = useState(false);
@@ -19,7 +24,7 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
 
     // integration of react-query hook to update note here
     const editNoteMutation = useMutation(({ noteId, noteText }) => {
-        return axios.patch(`/update-note?email=mjaumi2864@gmail.com&noteId=${noteId}`, { note: noteText });
+        return axios.patch(`/update-note?email=${user.email}&noteId=${noteId}`, { note: noteText });
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
@@ -28,7 +33,7 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
 
     // integration of react-query hook to delete note here
     const deleteNoteMutation = useMutation(noteId => {
-        return axios.patch(`/delete-note?email=mjaumi2864@gmail.com&noteId=${noteId}`);
+        return axios.patch(`/delete-note?email=${user.email}&noteId=${noteId}`);
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
@@ -41,7 +46,7 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
 
         console.log(noteText);
 
-        if (noteText !== note && noteText !== '') {
+        if (noteText !== note && noteText !== '' && user) {
             editNoteMutation.mutate({ noteId: _id, noteText });
         }
     }

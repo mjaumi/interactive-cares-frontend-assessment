@@ -6,11 +6,20 @@ import ReactPlayer from 'react-player';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../utils/axios';
 import { useMutation, useQueryClient } from 'react-query';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import useGetUserInfo from '../../hooks/useGetUserInfo';
 
-const VideoPlayerFrame = ({ user }) => {
+const VideoPlayerFrame = () => {
     // integration of react-router-dom hooks here
     const { videoId } = useParams();
     const navigate = useNavigate();
+
+    // integration of custom hooks here
+    const { addedNotes, watchedVideos } = useGetUserInfo();
+
+    // integration of react-firebase hooks here
+    const [authUser] = useAuthState(auth);
 
     // integration of react-query hooks here
     const queryClient = useQueryClient();
@@ -42,7 +51,7 @@ const VideoPlayerFrame = ({ user }) => {
 
     // mutation function to mutate watched video list
     const watchListMutation = useMutation(watchedVideoId => {
-        return axios.patch(`/update-watched-videos?email=mjaumi2864@gmail.com&videoId=${watchedVideoId}`);
+        return axios.patch(`/update-watched-videos?email=${authUser.email}&videoId=${watchedVideoId}`);
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
@@ -68,7 +77,7 @@ const VideoPlayerFrame = ({ user }) => {
 
     // this function is called to mutate the watched video list
     const addVideoToWatchedList = () => {
-        if (!user.watched_videos.includes(video_id)) {
+        if (!watchedVideos.includes(video_id)) {
             watchListMutation.mutate(video_id);
         }
     }
@@ -121,7 +130,7 @@ const VideoPlayerFrame = ({ user }) => {
                     isVideoPaused={isVideoPaused}
                     timestamp={timeStamp}
                     seekToTimeStamp={seekToTimeStamp}
-                    noteList={user?.added_notes}
+                    noteList={addedNotes}
                     videoId={video_id}
                 />
             </div>
