@@ -79,6 +79,10 @@ body {
     margin-left: 10px;
 }
 
+.text-ed-tech-blue {
+    color: $ed-tech-blue-primary !important;
+}
+
 .ed-tech-span {
     font-weight: 400;
     font-size: 12px;
@@ -107,6 +111,11 @@ body {
 
 .ed-tech-button:active {
     transform: scale(0.9);
+}
+
+.ed-tech-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 .ed-tech-button+.ed-tech-button {

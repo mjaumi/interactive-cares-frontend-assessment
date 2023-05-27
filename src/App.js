@@ -1,11 +1,14 @@
-import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import VideoPlayer from './pages/VideoPlayer/VideoPlayer';
 
 
 function App() {
   return (
-    <main>
-      <VideoPlayer />
-    </main>
+    <Router>
+      <Routes>
+        <Route path='/:videoId' element={<VideoPlayer />} />
+      </Routes>
+    </Router>
   );
 }
 

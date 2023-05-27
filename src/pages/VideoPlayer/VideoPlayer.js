@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './videoPlayer.module.scss';
 import Navbar from '../../components/Navbar/Navbar';
-import PlayerIFrame from '../../components/PlayerIFrame/PlayerIFrame';
+import VideoPlayerFrame from '../../components/VideoPlayerFrame/VideoPlayerFrame';
 import Playlist from '../../components/Playlist/Playlist';
 import axios from '../../utils/axios';
 
@@ -19,14 +19,12 @@ const Videos = () => {
         getVideos();
     }, []);
 
-    console.log(videos);
-
     // rendering videos page here
     return (
         <div>
             <Navbar />
             <div className={`container ${styles.ed_tech_video_player}`}>
-                <PlayerIFrame video={videos[0]} />
+                <VideoPlayerFrame />
                 <Playlist videos={videos} />
             </div>
         </div>

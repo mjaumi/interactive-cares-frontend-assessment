@@ -41,6 +41,13 @@ async function run() {
             res.send(videos);
         });
 
+        // GET API to get single video by video id
+        app.get('/video/:videoId', async (req, res) => {
+            const videoId = req.params.videoId;
+            const video = await videosCollection.findOne({ video_id: Number(videoId) });
+            res.send(video);
+        });
+
     } finally {
 
     }

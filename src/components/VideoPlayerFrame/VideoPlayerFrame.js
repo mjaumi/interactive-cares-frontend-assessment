@@ -1,21 +1,49 @@
-import React, { useRef, useState } from 'react';
-import styles from './playerIFrame.module.scss';
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './videoPlayerFrame.module.scss';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from 'react-icons/ai';
 import NoteList from '../NoteList/NoteList';
 import ReactPlayer from 'react-player';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from '../../utils/axios';
 
-const PlayerIFrame = ({ video }) => {
-    // destructuring the video object here
-    const { url, title, upload_date } = video || {};
+const VideoPlayerFrame = () => {
+    // integration of react-router-dom hooks here
+    const { videoId } = useParams();
+    const navigate = useNavigate();
 
     // integration of react hooks here
     const [isVideoPaused, setIsVideoPaused] = useState(false);
+    const [disablePrevBtn, setDisablePrevBtn] = useState(false);
+    const [disableNextBtn, setDisableNextBtn] = useState(false);
     const [timeStamp, setTimeStamp] = useState('');
+    const [video, setVideo] = useState({});
     const videoRef = useRef();
+
+    // destructuring the video object here
+    const { video_id, url, title, upload_date } = video || {};
+
+    // fetching single video by video id here
+    useEffect(() => {
+        const getVideo = async (videoId) => {
+            const { data } = await axios.get(`/video/${videoId}`);
+
+            videoId < 10 ? setDisableNextBtn(false) : setDisableNextBtn(true);
+            videoId > 1 ? setDisablePrevBtn(false) : setDisablePrevBtn(true);
+
+            setVideo(data);
+        }
+
+        getVideo(videoId);
+    }, [videoId]);
 
     // this function is checking if the video is playing or paused
     const videoPlayPauseChecker = videoState => {
         setIsVideoPaused(videoState);
+    }
+
+    // handler function to handle next or previous video jumping feature
+    const jumpToVideoHandler = (videoId, nextOrPrev) => {
+        nextOrPrev === 'next' ? navigate(`/${videoId + 1}`) : navigate(`/${videoId - 1}`);
     }
 
     // this function is returning the current progress time in minutes
@@ -51,11 +79,11 @@ const PlayerIFrame = ({ video }) => {
                     <span className='ed-tech-span'>Uploaded on {upload_date}</span>
                 </div>
                 <div className={styles.ed_tech_player_btn_container}>
-                    <button className='ed-tech-button ed-tech-button-fixed'>
+                    <button onClick={() => jumpToVideoHandler(video_id, 'prev')} className='ed-tech-button ed-tech-button-fixed' disabled={disablePrevBtn}>
                         <AiOutlineDoubleLeft size={12} className='mr-10' />
                         Previous
                     </button>
-                    <button className='ed-tech-button ed-tech-button-fixed'>
+                    <button onClick={() => jumpToVideoHandler(video_id, 'next')} className='ed-tech-button ed-tech-button-fixed' disabled={disableNextBtn}>
                         Next
                         <AiOutlineDoubleRight size={12} className='ml-10' />
                     </button>
@@ -72,4 +100,4 @@ const PlayerIFrame = ({ video }) => {
     );
 };
 
-export default PlayerIFrame;
+export default VideoPlayerFrame;
