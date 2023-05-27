@@ -56,6 +56,22 @@ async function run() {
             res.send(user);
         });
 
+        // PATCH API to delete a specific note
+        app.patch('/delete-note', async (req, res) => {
+            const noteId = req.query.noteId;
+            const userEmail = req.query.email;
+            const filter = { email: userEmail };
+            const deleteNoteQuery = {
+                $pull: {
+                    added_notes: { _id: new ObjectId(noteId) }
+                },
+            };
+
+            const deletedNote = await usersCollection.updateOne(filter, deleteNoteQuery);
+
+            res.send(deletedNote);
+        });
+
         // PATCH API to update (insert) new notes 
         app.patch('/notes', async (req, res) => {
             const userEmail = req.query.email;

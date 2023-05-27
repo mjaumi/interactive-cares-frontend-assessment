@@ -6,16 +6,19 @@
         "watched_videos": [1, 2],
         "added_notes": [
             {
+                "_id": "6471da688675c9b1f0fba50c",
                 "video_id": 1,
                 "note": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum voluptate esse provident unde quis sapiente perspiciatis ducimus repellendus necessitatibus rerum, minima inventore quas officia alias debitis reprehenderit non quos.",
                 "timestamp": "00:59"
             },
             {
+                "_id": "6471da8e1ee2059466cbd663",
                 "video_id": 1,
                 "note": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum voluptate esse provident unde quis sapiente perspiciatis ducimus repellendus necessitatibus rerum, minima inventore quas officia alias debitis reprehenderit non quos.",
                 "timestamp": "02:48"
             },
             {
+                "_id": "6471dafcca42da4b424bc8b4",
                 "video_id": 2,
                 "note": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum voluptate esse provident unde quis sapiente perspiciatis ducimus repellendus necessitatibus rerum, minima inventore quas officia alias debitis reprehenderit non quos.",
                 "timestamp": "04:15"
