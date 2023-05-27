@@ -1,10 +1,14 @@
 import React from 'react';
 import styles from './playlist.module.scss';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
+import useGetVideos from '../../hooks/useGetVideos';
 
-const Playlist = ({ videos, user }) => {
+const Playlist = ({ user }) => {
     // destructuring the user object here
     const { watched_videos } = user || {};
+
+    // integration of custom hooks here
+    const videos = useGetVideos();
 
     // calculating the progress bar value here 
     const progressValue = (watched_videos?.length / videos?.length) * 100 + '%';

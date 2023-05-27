@@ -5,11 +5,15 @@ import NoteList from '../NoteList/NoteList';
 import ReactPlayer from 'react-player';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../utils/axios';
+import { useMutation, useQueryClient } from 'react-query';
 
-const VideoPlayerFrame = ({ noteList }) => {
+const VideoPlayerFrame = ({ user }) => {
     // integration of react-router-dom hooks here
     const { videoId } = useParams();
     const navigate = useNavigate();
+
+    // integration of react-query hooks here
+    const queryClient = useQueryClient();
 
     // integration of react hooks here
     const [isVideoPaused, setIsVideoPaused] = useState(false);
@@ -36,6 +40,15 @@ const VideoPlayerFrame = ({ noteList }) => {
         getVideo(videoId);
     }, [videoId]);
 
+    // mutation function to mutate watched video list
+    const watchListMutation = useMutation(watchedVideoId => {
+        return axios.patch(`/update-watched-videos?email=mjaumi2864@gmail.com&videoId=${watchedVideoId}`);
+    }, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('user');
+        }
+    })
+
     // this function is checking if the video is playing or paused
     const videoPlayPauseChecker = videoState => {
         setIsVideoPaused(videoState);
@@ -43,7 +56,21 @@ const VideoPlayerFrame = ({ noteList }) => {
 
     // handler function to handle next or previous video jumping feature
     const jumpToVideoHandler = (videoId, nextOrPrev) => {
-        nextOrPrev === 'next' ? navigate(`/${videoId + 1}`) : navigate(`/${videoId - 1}`);
+        if (nextOrPrev === 'next') {
+            navigate(`/${videoId + 1}`);
+
+            addVideoToWatchedList();
+        } else {
+            navigate(`/${videoId - 1}`);
+        }
+
+    }
+
+    // this function is called to mutate the watched video list
+    const addVideoToWatchedList = () => {
+        if (!user.watched_videos.includes(video_id)) {
+            watchListMutation.mutate(video_id);
+        }
     }
 
     // this function is returning the current progress time in minutes
@@ -71,7 +98,7 @@ const VideoPlayerFrame = ({ noteList }) => {
     return (
         <div className={styles.ed_tech_player_container}>
             <div>
-                <ReactPlayer ref={videoRef} className={styles.ed_tech_video_player} controls playing url={url} onPlay={() => videoPlayPauseChecker(false)} onPause={() => videoPlayPauseChecker(true)} onProgress={getCurrentTimeInMinutes} />
+                <ReactPlayer ref={videoRef} className={styles.ed_tech_video_player} controls playing url={url} onPlay={() => videoPlayPauseChecker(false)} onPause={() => videoPlayPauseChecker(true)} onProgress={getCurrentTimeInMinutes} onEnded={addVideoToWatchedList} />
             </div>
             <div className={styles.ed_tech_player_title_container}>
                 <div>
@@ -94,7 +121,7 @@ const VideoPlayerFrame = ({ noteList }) => {
                     isVideoPaused={isVideoPaused}
                     timestamp={timeStamp}
                     seekToTimeStamp={seekToTimeStamp}
-                    noteList={noteList}
+                    noteList={user.added_notes}
                     videoId={video_id}
                 />
             </div>

@@ -56,6 +56,22 @@ async function run() {
             res.send(user);
         });
 
+        // PATCH API to update the video watch list
+        app.patch('/update-watched-videos', async (req, res) => {
+            const videoId = Number(req.query.videoId);
+            const userEmail = req.query.email;
+            const filter = { email: userEmail };
+            const user = await usersCollection.findOne(filter);
+            const updateWatchedListQuery = {
+                $set: {
+                    watched_videos: [...user.watched_videos, videoId]
+                }
+            };
+
+            const updateResult = await usersCollection.updateOne(filter, updateWatchedListQuery);
+            res.send(updateResult);
+        });
+
         // PATCH API to delete a specific note
         app.patch('/delete-note', async (req, res) => {
             const noteId = req.query.noteId;
@@ -80,7 +96,7 @@ async function run() {
             const filter = {
                 $and: [
                     { email: userEmail },
-                    { 'added_notes._id': noteId },
+                    { 'added_notes._id': new ObjectId(noteId) },
                 ]
             };
             const updateNoteQuery = {
