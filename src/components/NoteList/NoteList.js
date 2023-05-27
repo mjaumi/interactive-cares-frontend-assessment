@@ -58,14 +58,15 @@ const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId
                 <h3>Exiting Notes For This Video</h3>
                 <div>
                     {
-                        noteList?.length &&
-                        noteList
-                            .filter(note => note.video_id === videoId)
-                            .map((note, index) => <NoteListItem
-                                key={index}
-                                videoNote={note}
-                                seekToTimeStamp={seekToTimeStamp}
-                            />)
+                        noteList?.length !== 0 ?
+                            noteList?.filter(note => note.video_id === videoId)
+                                .map((note, index) => <NoteListItem
+                                    key={index}
+                                    videoNote={note}
+                                    seekToTimeStamp={seekToTimeStamp}
+                                />)
+                            :
+                            <p className={styles.ed_tech_note_not_found}>No Notes For This Video Found. But You Can Add One.</p>
                     }
                 </div>
             </div>
