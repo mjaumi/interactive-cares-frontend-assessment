@@ -1,0 +1,72 @@
+[
+    {
+        "video_id": 1,
+        "title": "React Bangla Tutorial 0 : welcome to react video series",
+        "url": "https://youtu.be/J_NcpE_d70U",
+        "duration": "3:20",
+        "upload_date": "Nov 18, 2020"
+    },
+    {
+        "video_id": 2,
+        "title": "React Bangla Tutorial 1 : Introduction to React",
+        "url": "https://youtu.be/fRXL0X2WSK4",
+        "duration": "5:57",
+        "upload_date": "Nov 19, 2020"
+    },
+    {
+        "video_id": 3,
+        "title": "React Bangla Tutorial 2 : environment setup",
+        "url": "https://youtu.be/4wjI8fh77GM",
+        "duration": "2:50",
+        "upload_date": "Nov 20, 2020"
+    },
+    {
+        "video_id": 4,
+        "title": "React Bangla Tutorial 3 : Create first React project with Vite",
+        "url": "https://youtu.be/_yYO_ly9hmY",
+        "duration": "14:44",
+        "upload_date": "May 8, 2023"
+    },
+    {
+        "video_id": 5,
+        "title": "React Bangla Tutorial 3 : create react project with CRA | react 18",
+        "url": "https://youtu.be/UDP507ZO8mY",
+        "duration": "10:59",
+        "upload_date": "May 20, 2022"
+    },
+    {
+        "video_id": 6,
+        "title": "React Bangla Tutorial 4 : JSX and JS Expression",
+        "url": "https://youtu.be/6-r6pBA4eUY",
+        "duration": "9:39",
+        "upload_date": "Nov 20, 2020"
+    },
+    {
+        "video_id": 7,
+        "title": "React Bangla Tutorial 5 : CSS Styling in JSX",
+        "url": "https://youtu.be/02YWKDxLpwk",
+        "duration": "9:42",
+        "upload_date": "Nov 21, 2020"
+    },
+    {
+        "video_id": 8,
+        "title": "React Bangla Tutorial 6 : More on CSS in JSX | design a card",
+        "url": "https://youtu.be/GeIBo8hLg_Q",
+        "duration": "6:04",
+        "upload_date": "Nov 21, 2020"
+    },
+    {
+        "video_id": 9,
+        "title": "React Bangla Tutorial 7 : how to create and use react component",
+        "url": "https://youtu.be/qgLZSNppJOU",
+        "duration": "14:53",
+        "upload_date": "Nov 22, 2020"
+    },
+    {
+        "video_id": 10,
+        "title": "React Bangla Tutorial 8 : Props and destructuring",
+        "url": "https://youtu.be/GQx58yfYqxo",
+        "duration": "9:39",
+        "upload_date": "Nov 23, 2020"
+    }
+]

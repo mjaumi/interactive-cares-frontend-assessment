@@ -40,7 +40,7 @@ const PlayerIFrame = () => {
     return (
         <div className={styles.ed_tech_player_container}>
             <div>
-                <ReactPlayer ref={videoRef} className={styles.ed_tech_video_player} controls url='https://www.youtube.com/embed/GxAYlEK7ZGg' onPlay={() => videoPlayPauseChecker(false)} onPause={() => videoPlayPauseChecker(true)} onProgress={getCurrentTimeInMinutes} />
+                <ReactPlayer ref={videoRef} className={styles.ed_tech_video_player} controls url='https://youtu.be/J_NcpE_d70U' onPlay={() => videoPlayPauseChecker(false)} onPause={() => videoPlayPauseChecker(true)} onProgress={getCurrentTimeInMinutes} />
             </div>
             <div className={styles.ed_tech_player_title_container}>
                 <div>
