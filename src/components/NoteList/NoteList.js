@@ -3,10 +3,23 @@ import styles from './noteList.module.scss';
 import { MdAddTask } from 'react-icons/md';
 import NoteListItem from '../NoteListItem/NoteListItem';
 import axios from '../../utils/axios';
+import { useMutation, useQueryClient } from 'react-query';
 
 const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId }) => {
     // integration of react hooks here
     const [noteText, setNoteText] = useState('');
+
+    // integration of react-query hooks here
+    const queryClient = useQueryClient();
+
+    // integration of react-query hooks for adding new note
+    const noteMutation = useMutation(noteData => {
+        return axios.patch('/notes?email=mjaumi2864@gmail.com', noteData);
+    }, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('user');
+        }
+    });
 
     // handler function to handle add new note into the database
     const addNewNoteHandler = async (e) => {
@@ -18,9 +31,10 @@ const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId
             timestamp,
         };
 
-        const { data } = await axios.patch('/notes?email=mjaumi2864@gmail.com', noteData);
+        noteMutation.mutate(noteData);
 
-        console.log(data, noteData);
+        // resetting the note text input
+        setNoteText('');
     }
 
     // rendering note list component here

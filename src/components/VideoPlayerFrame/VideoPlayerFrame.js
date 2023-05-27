@@ -121,7 +121,7 @@ const VideoPlayerFrame = ({ user }) => {
                     isVideoPaused={isVideoPaused}
                     timestamp={timeStamp}
                     seekToTimeStamp={seekToTimeStamp}
-                    noteList={user.added_notes}
+                    noteList={user?.added_notes}
                     videoId={video_id}
                 />
             </div>

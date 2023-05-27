@@ -15,8 +15,8 @@ const Videos = () => {
         <div>
             <Navbar />
             <div className={`container ${styles.ed_tech_video_player}`}>
-                <VideoPlayerFrame user={data.data} />
-                <Playlist user={data.data} />
+                <VideoPlayerFrame user={data?.data} />
+                <Playlist user={data?.data} />
             </div>
         </div>
     );
