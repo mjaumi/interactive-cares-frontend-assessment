@@ -92,7 +92,7 @@ const VideoPlayerFrame = ({ noteList }) => {
             <div>
                 <NoteList
                     isVideoPaused={isVideoPaused}
-                    timeStamp={timeStamp}
+                    timestamp={timeStamp}
                     seekToTimeStamp={seekToTimeStamp}
                     noteList={noteList}
                     videoId={video_id}

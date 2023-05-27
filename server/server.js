@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -54,6 +54,28 @@ async function run() {
             const userEmail = req.query.email;
             const user = await usersCollection.findOne({ email: userEmail });
             res.send(user);
+        });
+
+        // PATCH API to update (insert) new notes 
+        app.patch('/notes', async (req, res) => {
+            const userEmail = req.query.email;
+            const newNote = req.body;
+            const filter = { email: userEmail };
+            const user = await usersCollection.findOne(filter);
+            const addNewNoteQuery = {
+                $set: {
+                    added_notes: [
+                        ...user.added_notes,
+                        {
+                            _id: new ObjectId(),
+                            ...newNote,
+                        }
+                    ],
+                },
+            };
+
+            const updateNotes = await usersCollection.updateOne(filter, addNewNoteQuery);
+            res.send(updateNotes);
         });
 
     } finally {
