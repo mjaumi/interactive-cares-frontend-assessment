@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './noteListItem.module.scss';
-import { MdAddTask } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
 import { AiTwotoneDelete } from 'react-icons/ai';
+import { MdUpdate, MdCancel } from 'react-icons/md';
 import axios from '../../utils/axios';
 import { useMutation, useQueryClient } from 'react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -95,13 +95,16 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
                 <button onClick={editNoteHandler} type='button' className={`ed-tech-button ed-tech-icon-button ${toggleEditButton ? 'add' : 'edit'}`}>
                     {
                         toggleEditButton ?
-                            <MdAddTask size={20} className='icon' />
+                            noteText === note ?
+                                <MdCancel size={22} className='icon' />
+                                :
+                                <MdUpdate size={22} className='icon' />
                             :
-                            <FaRegEdit size={20} className='icon' />
+                            <FaRegEdit size={22} className='icon' />
                     }
                 </button>
                 <button onClick={deleteNoteHandler} type='button' className='ed-tech-button ed-tech-icon-button delete'>
-                    <AiTwotoneDelete size={20} className='icon' />
+                    <AiTwotoneDelete size={22} className='icon' />
                 </button>
             </div>
         </div>

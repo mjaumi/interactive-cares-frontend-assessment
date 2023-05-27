@@ -24,6 +24,7 @@ const NoteList = ({ isVideoPaused, timestamp, seekToTimeStamp, noteList, videoId
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
+
             toast.success('New Note Added!!', {
                 toastId: 'add note success',
             });
