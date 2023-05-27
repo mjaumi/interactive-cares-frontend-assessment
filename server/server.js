@@ -132,6 +132,14 @@ async function run() {
             res.send(updateNotes);
         });
 
+
+        // POST API to add new user in the server
+        app.post('/user', async (req, res) => {
+            const newUser = req.body;
+            const addUserResult = await usersCollection.insertOne(newUser);
+            res.send(addUserResult);
+        });
+
     } finally {
 
     }
