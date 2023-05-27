@@ -8,6 +8,7 @@ import axios from '../../utils/axios';
 const Videos = () => {
     // integration of react hooks here
     const [videos, setVideos] = useState([]);
+    const [user, setUser] = useState({});
 
     // fetching all the videos from database here
     useEffect(() => {
@@ -19,13 +20,27 @@ const Videos = () => {
         getVideos();
     }, []);
 
+    // fetching user by email from database here
+    useEffect(() => {
+        const getUser = async () => {
+            const { data } = await axios.get('/user?email=mjaumi2864@gmail.com');
+
+            setUser(data);
+        }
+
+        getUser();
+    }, []);
+
     // rendering videos page here
     return (
         <div>
             <Navbar />
             <div className={`container ${styles.ed_tech_video_player}`}>
-                <VideoPlayerFrame />
-                <Playlist videos={videos} />
+                <VideoPlayerFrame noteList={user?.added_notes} />
+                <Playlist
+                    videos={videos}
+                    user={user}
+                />
             </div>
         </div>
     );

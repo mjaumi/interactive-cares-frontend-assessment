@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './playlistItem.module.scss';
-import { BsPlayCircleFill } from 'react-icons/bs';
+import { BsPlayCircleFill, BsCheckCircleFill } from 'react-icons/bs';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const PlaylistItem = ({ video }) => {
+const PlaylistItem = ({ video, isVideoWatched }) => {
     // destructing the video object here
     const { video_id, title, duration } = video || {};
 
@@ -21,11 +21,19 @@ const PlaylistItem = ({ video }) => {
         <div onClick={() => navigateToVideo(video_id)} className={styles.ed_tech_playlist_item}>
             <div className={`${styles.ed_tech_playlist_item_container} ${parseInt(videoId) === video_id && 'text-ed-tech-blue'}`}>
                 <div>
-                    <BsPlayCircleFill className='mt-4' />
+                    {
+                        isVideoWatched ?
+                            <BsCheckCircleFill className='mt-4 text-ed-tech-green' />
+                            :
+                            <BsPlayCircleFill className='mt-4' />
+                    }
                 </div>
                 <div>
                     <p>{title}</p>
                     <span className='ed-tech-span'>{duration} Mins</span>
+                    {
+
+                    }
                 </div>
             </div>
         </div>

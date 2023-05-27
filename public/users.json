@@ -1,0 +1,25 @@
+[
+    {
+        "email": "mjaumi2864@gmail.com",
+        "first_name": "Milhan Joardar",
+        "last_name": "Aumi",
+        "watched_videos": [1, 2],
+        "added_notes": [
+            {
+                "video_id": 1,
+                "note": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum voluptate esse provident unde quis sapiente perspiciatis ducimus repellendus necessitatibus rerum, minima inventore quas officia alias debitis reprehenderit non quos.",
+                "timestamp": "00:59"
+            },
+            {
+                "video_id": 1,
+                "note": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum voluptate esse provident unde quis sapiente perspiciatis ducimus repellendus necessitatibus rerum, minima inventore quas officia alias debitis reprehenderit non quos.",
+                "timestamp": "02:48"
+            },
+            {
+                "video_id": 2,
+                "note": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum voluptate esse provident unde quis sapiente perspiciatis ducimus repellendus necessitatibus rerum, minima inventore quas officia alias debitis reprehenderit non quos.",
+                "timestamp": "04:15"
+            }
+        ]
+    }
+]

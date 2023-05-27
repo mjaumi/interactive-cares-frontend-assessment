@@ -32,6 +32,7 @@ async function run() {
 
         // collections declaration here
         const videosCollection = edTechDB.collection('videos');
+        const usersCollection = edTechDB.collection('users');
 
         console.log('MongoDB Connected');
 
@@ -46,6 +47,13 @@ async function run() {
             const videoId = req.params.videoId;
             const video = await videosCollection.findOne({ video_id: Number(videoId) });
             res.send(video);
+        });
+
+        // GET API to get user by email
+        app.get('/user', async (req, res) => {
+            const userEmail = req.query.email;
+            const user = await usersCollection.findOne({ email: userEmail });
+            res.send(user);
         });
 
     } finally {
