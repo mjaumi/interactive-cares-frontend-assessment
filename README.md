@@ -22,6 +22,10 @@ For progress tracking, I have added a progress bar on the top of the video playl
 
 I have also applied authentication in this application. User must signup and login to our system in order to watch videos.
 
+### `Server`
+
+I have used `http://localhost:9000` port for server.
+
 ## Libraries Used
 
 - React Player
