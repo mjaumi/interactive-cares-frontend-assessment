@@ -1,5 +1,7 @@
 # Interactive Cares Frontend Assessment
 
+### Live Preview Link: (https://ed-tech-defe0.web.app)[https://ed-tech-defe0.web.app]
+
 This is an interactive learning platform project named `Ed Tech` created for Interactive Cares frontend assessment. Here, user can signup, login and watch video from the platform. Users also can add notes on specific video based on timestamps. Moreover, user can jump to a specific part of the video using the timestamp.
 
 ## Functionalities
