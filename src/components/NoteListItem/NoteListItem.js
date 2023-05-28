@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './noteListItem.module.scss';
 import { FaRegEdit } from 'react-icons/fa';
 import { AiTwotoneDelete } from 'react-icons/ai';
@@ -19,7 +19,7 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
 
     // integration of react hooks here
     const [toggleEditButton, setToggleEditButton] = useState(false);
-    const [noteText, setNoteText] = useState(note);
+    const [noteText, setNoteText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     // integration of react-query hooks here
@@ -29,8 +29,8 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     const editNoteMutation = useMutation(({ noteId, noteText }) => {
         return axios.patch(`/update-note?email=${user.email}&noteId=${noteId}`, { note: noteText });
     }, {
-        onSuccess: () => {
-            queryClient.invalidateQueries('user');
+        onSuccess: async () => {
+            await queryClient.invalidateQueries('user');
 
             setIsLoading(false);
 
@@ -68,6 +68,11 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
             });
         }
     });
+
+    // setting note text for editing
+    useEffect(() => {
+        setNoteText(note);
+    }, [note]);
 
     // handler function to handle edit notes
     const editNoteHandler = async () => {

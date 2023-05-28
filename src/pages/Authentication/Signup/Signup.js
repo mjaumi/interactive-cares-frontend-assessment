@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import axios from '../../../utils/axios';
 import { toast } from 'react-toastify';
 import Loading from '../../../components/Loading/Loading';
+import PageTitle from '../../../components/PageTitle/PageTitle';
 
 const Signup = () => {
     // integration of react-firebase hooks here
@@ -47,6 +48,10 @@ const Signup = () => {
 
             const success = await signOut();
             success && navigate('/');
+        } else {
+            toast.error('Password Mismatched!!', {
+                toastId: 'password match fail',
+            });
         }
 
     }
@@ -62,6 +67,7 @@ const Signup = () => {
     return (
         <>
             <section className='ed-tech-auth-section'>
+                <PageTitle title={'Sign Up'} />
                 <div className='ed-tech-auth-form-container'>
                     <div className='ed-tech-logo'>
                         <h2>Ed <span>Tech</span></h2>

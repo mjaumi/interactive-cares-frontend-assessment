@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import Loading from '../../../components/Loading/Loading';
+import PageTitle from '../../../components/PageTitle/PageTitle';
 
 const Login = () => {
     // integration of react-firebase hooks here
@@ -41,6 +42,7 @@ const Login = () => {
     return (
         <>
             <section className='ed-tech-auth-section'>
+                <PageTitle title={'Log In'} />
                 <div className='ed-tech-auth-form-container'>
                     <div className='ed-tech-logo'>
                         <h2>Ed <span>Tech</span></h2>
