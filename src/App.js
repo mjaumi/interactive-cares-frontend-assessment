@@ -6,8 +6,9 @@ import PrivateRoute from './components/Routes/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/Routes/PublicRoute/PublicRoute';
 import NotFound from './pages/NotFound/NotFound';
 
-
 function App() {
+
+  // rendering the application here
   return (
     <Router>
       <Routes>

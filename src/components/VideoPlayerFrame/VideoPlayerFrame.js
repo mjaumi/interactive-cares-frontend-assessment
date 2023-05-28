@@ -44,10 +44,15 @@ const VideoPlayerFrame = () => {
             videoId > 1 ? setDisablePrevBtn(false) : setDisablePrevBtn(true);
 
             setVideo(data);
+
+            // returning 404 if video not found
+            if (!data._id) {
+                navigate('/invalid');
+            }
         }
 
         getVideo(videoId);
-    }, [videoId]);
+    }, [videoId, navigate]);
 
     // mutation function to mutate watched video list
     const watchListMutation = useMutation(watchedVideoId => {
