@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
 
 const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     // destructuring the note object here
@@ -19,6 +20,7 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     // integration of react hooks here
     const [toggleEditButton, setToggleEditButton] = useState(false);
     const [noteText, setNoteText] = useState(note);
+    const [isLoading, setIsLoading] = useState(false);
 
     // integration of react-query hooks here
     const queryClient = useQueryClient();
@@ -30,11 +32,15 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
 
+            setIsLoading(false);
+
             toast.success('Note Updated!!', {
                 toastId: 'note updated success',
             });
         },
         onError: () => {
+            setIsLoading(false);
+
             toast.error('Note Updating Failed!!', {
                 toastId: 'note update fail',
             });
@@ -48,11 +54,15 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
 
+            setIsLoading(false);
+
             toast.success('Note Deleted!!', {
                 toastId: 'note delete success',
             });
         },
         onError: () => {
+            setIsLoading(false);
+
             toast.error('Note Deleting Failed!!', {
                 toastId: 'note delete fail',
             });
@@ -63,51 +73,56 @@ const NoteListItem = ({ seekToTimeStamp, videoNote }) => {
     const editNoteHandler = async () => {
         setToggleEditButton(!toggleEditButton);
 
-        console.log(noteText);
-
         if (noteText !== note && noteText !== '' && user) {
+            setIsLoading(true);
             editNoteMutation.mutate({ noteId: _id, noteText });
         }
     }
 
     // handler function to handle deleting notes
     const deleteNoteHandler = () => {
+        setIsLoading(true);
         deleteNoteMutation.mutate(_id);
     }
 
     // rendering note list item component here
     return (
-        <div className={styles.ed_tech_note_item_container}>
-            <div className={styles.ed_tech_note_item_wrapper}>
-                <span className={styles.time_stamp}>
-                    <p onClick={() => seekToTimeStamp(timestamp)}>{timestamp}</p>
-                </span>
-                <div className='w-full mr-10'>
-                    {
-                        toggleEditButton ?
-                            <textarea value={noteText} onChange={e => setNoteText(e.target.value)} cols="30" rows="2" placeholder='Type Your Note...' className='ed-tech-input w-full'></textarea>
-                            :
-                            <p className={styles.note}>{note}</p>
-                    }
+        <>
+            <div className={styles.ed_tech_note_item_container}>
+                <div className={styles.ed_tech_note_item_wrapper}>
+                    <span className={styles.time_stamp}>
+                        <p onClick={() => seekToTimeStamp(timestamp)}>{timestamp}</p>
+                    </span>
+                    <div className='w-full mr-10'>
+                        {
+                            toggleEditButton ?
+                                <textarea value={noteText} onChange={e => setNoteText(e.target.value)} cols="30" rows="2" placeholder='Type Your Note...' className='ed-tech-input w-full'></textarea>
+                                :
+                                <p className={styles.note}>{note}</p>
+                        }
+                    </div>
+                </div>
+                <div className={styles.ed_tech_note_button_container}>
+                    <button onClick={editNoteHandler} type='button' className={`ed-tech-button ed-tech-icon-button ${toggleEditButton ? 'add' : 'edit'}`}>
+                        {
+                            toggleEditButton ?
+                                noteText === note ?
+                                    <MdCancel size={22} className='icon' />
+                                    :
+                                    <MdUpdate size={22} className='icon' />
+                                :
+                                <FaRegEdit size={22} className='icon' />
+                        }
+                    </button>
+                    <button onClick={deleteNoteHandler} type='button' className='ed-tech-button ed-tech-icon-button delete'>
+                        <AiTwotoneDelete size={22} className='icon' />
+                    </button>
                 </div>
             </div>
-            <div className={styles.ed_tech_note_button_container}>
-                <button onClick={editNoteHandler} type='button' className={`ed-tech-button ed-tech-icon-button ${toggleEditButton ? 'add' : 'edit'}`}>
-                    {
-                        toggleEditButton ?
-                            noteText === note ?
-                                <MdCancel size={22} className='icon' />
-                                :
-                                <MdUpdate size={22} className='icon' />
-                            :
-                            <FaRegEdit size={22} className='icon' />
-                    }
-                </button>
-                <button onClick={deleteNoteHandler} type='button' className='ed-tech-button ed-tech-icon-button delete'>
-                    <AiTwotoneDelete size={22} className='icon' />
-                </button>
-            </div>
-        </div>
+            {
+                isLoading && <Loading />
+            }
+        </>
     );
 };
 

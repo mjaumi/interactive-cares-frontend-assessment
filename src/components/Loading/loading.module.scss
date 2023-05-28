@@ -1,0 +1,20 @@
+@import '../../assets/scss/main.scss';
+
+// loading component design here
+.ed_tech_loading_section {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: rgba($color: $ed-tech-black-primary, $alpha: 0.7);
+    z-index: 999999;
+}
+
+.ed_tech_loading_section div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

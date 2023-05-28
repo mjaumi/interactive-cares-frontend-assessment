@@ -9,10 +9,10 @@ const Videos = () => {
     return (
         <>
             <Navbar />
-            <div className={`container ${styles.ed_tech_video_player}`}>
+            <section className={`container ${styles.ed_tech_video_player}`}>
                 <VideoPlayerFrame />
                 <Playlist />
-            </div>
+            </section>
         </>
     );
 };

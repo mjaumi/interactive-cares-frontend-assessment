@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import styles from './signup.module.scss';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignOut, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import axios from '../../../utils/axios';
 import { toast } from 'react-toastify';
+import Loading from '../../../components/Loading/Loading';
 
 const Signup = () => {
     // integration of react-firebase hooks here
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+    const [signOut] = useSignOut(auth);
 
     // integration of react hooks here
     const [firstName, setFirstName] = useState('');
@@ -37,18 +39,20 @@ const Signup = () => {
 
             const { status } = await axios.post('/user', userData);
 
-            if (user && status === 200) {
-                toast.success('SignUp Successful!! Please, Login To Your Account.', {
+            if (status === 200) {
+                toast.success('SignUp Success!! Please, Login Now.', {
                     toastId: 'signup success',
                 });
             }
 
-            navigate('/');
+            const success = await signOut();
+            success && navigate('/');
         }
 
     }
 
     if (error || updatingError) {
+        console.log(error, updatingError);
         toast.error('Signup Failed!!', {
             toastId: 'signup fail',
         });
@@ -93,6 +97,9 @@ const Signup = () => {
                     </form>
                 </div>
             </section>
+            {
+                (loading || updating) && <Loading />
+            }
         </>
     );
 };

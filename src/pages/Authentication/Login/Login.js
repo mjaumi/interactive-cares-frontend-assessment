@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import Loading from '../../../components/Loading/Loading';
 
 const Login = () => {
     // integration of react-firebase hooks here
@@ -22,6 +23,7 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
     }
 
+    // navigate to videos page
     if (user) {
         toast.success('Login Successful!!', {
             toastId: 'login success',
@@ -49,17 +51,20 @@ const Login = () => {
                     <form onSubmit={userLoginHandler}>
                         <div className='ed-tech-auth-input-container'>
                             <span>Email:</span>
-                            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className='ed-tech-auth-input' placeholder='Email Here...' />
+                            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className='ed-tech-auth-input' placeholder='Email Here...' required />
                         </div>
                         <div className='ed-tech-auth-input-container'>
                             <span>Password:</span>
-                            <input value={password} onChange={e => setPassword(e.target.value)} type="password" className='ed-tech-auth-input' placeholder='Password Here...' />
+                            <input value={password} onChange={e => setPassword(e.target.value)} type="password" className='ed-tech-auth-input' placeholder='Password Here...' required />
                         </div>
                         <p className='ed-tech-create-account-text'>Don't Have An Account? <Link to='/signup'>Create Account Here</Link></p>
                         <button className='ed-tech-button ed-tech-button-block log-btn' type="submit" disabled={loading}>Login</button>
                     </form>
                 </div>
             </section>
+            {
+                loading && <Loading />
+            }
         </>
     );
 };
