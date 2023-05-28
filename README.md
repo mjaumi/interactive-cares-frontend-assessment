@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Interactive Cares Frontend Assessment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an interactive learning platform project named `Ed Tech` created for Interactive Cares frontend assessment. Here, user can signup, login and watch video from the platform. Users also can add notes on specific video based on timestamps. Moreover, user can jump to a specific part of the video using the timestamp.
 
-## Available Scripts
+## Functionalities
 
-In the project directory, you can run:
+### `Video Player`
 
-### `npm start`
+In this project, I have used `react-player` library to play videos. I have taken first 10 videos of react playlist of `Anisul Islam` sir. There is a previous and a next button to navigate through the videos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Notes`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In this application, user can take note while watching the video. When the user pauses the video, an interface will shown up in the bottom of the video player which will take input as a note and save it to the database. Here, I have also added the feature of `editing` and `deleting` the notes. User will be shown the timestamp of the video when it is paused and after taking the note, the timestamp will also be saved in the database. Related notes to the currently playing video will appear below the input interface which will contain the timestamp and clicking on it, user will navigate to the same part of the video.
 
-### `npm test`
+### `Progress Tracking`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For progress tracking, I have added a progress bar on the top of the video playlist with a number of how many videos the user have finished. Whenever an user presses the `Next` button or a video is finished playing, the progress bar updates itself by query.
 
-### `npm run build`
+### `Authentication`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I have also applied authentication in this application. User must signup and login to our system in order to watch videos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Libraries Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React Player
+- React Router Dom
+- React Query
+- React Firebase Hooks
+- React Icons
+- React Loading Icons
+- React Toastify
+- Node Sass
+- MongoDB
+- Express
